@@ -1,0 +1,16 @@
+#root {
+  max-width: 1000px;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  overflow-x: hidden;
+}
+
+* {box-sizing: border-box;
+padding: 0;
+margin: 0;
+text-align: center;}
+
+*::-webkit-scrollbar {
+  display: none;
+}
