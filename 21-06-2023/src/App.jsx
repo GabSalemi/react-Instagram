@@ -47,7 +47,7 @@ function App() {
         return <div>IGTV</div>
       case "messanger":
         return (<div>
-          <Messanger message={users}/>
+          <Messanger />
         </div>)
         case "feed":
           return <Explore />
