@@ -1,0 +1,18 @@
+.modal__chat {
+    width: 100vw;
+    height: 100vh;
+    background-color: brown;
+}
+
+.hide {
+    position: absolute;
+    top: 100vh;
+    left: 0;
+}
+
+.shown {
+    position: absolute;
+    top: 0;
+    right: 0;
+
+}

@@ -1,0 +1,108 @@
+.camera {
+    position: relative;
+    top: 6px;
+    width: 100vw;
+    height: calc(100vh - 66px);
+  }
+
+  .camera__controls {
+    position: absolute;
+    width: 100%;
+    bottom: 30px;
+    left: 50%;
+    transform: translate(-50%, -20%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .camera__button {
+    height: 50px;
+    width: 50px;
+    border-radius: 100%;
+    outline:  2px solid white;
+    cursor: pointer;
+    border: 2px solid grey;
+    background-color: white;
+  }
+
+
+  .camera__filters {
+    
+    padding: 10px;
+    width: 100%;
+  }
+  
+  .camera__filters ul {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    height: 100%;
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .filter {
+    height: 40px;
+    width: 40px;
+    border-radius: 100%;
+    outline:  1px solid white;
+    cursor: pointer;
+    position: relative;
+  }
+  
+  .filter img {
+    width: 100%;
+    border-radius: 100%;
+    opacity: 0.5;
+  }
+  
+  .filter p {
+    color: white;
+    font-size: 0.7rem;
+    text-align: center;
+  }
+  
+  .one {
+    font-weight: bold;
+    filter: grayscale(1);
+  }
+  
+  .two {
+    font-weight: bold;
+    filter: blur(0.2rem);
+  }
+  
+  .three {
+    font-weight: bold;
+    filter: invert(0.1) contrast(1.2);
+  }
+  
+  .four {
+    font-weight: bold;
+    filter: saturate(2);
+  }
+  
+  .five {
+    font-weight: bold;
+    filter: hue-rotate(5rad);
+  }
+
+  .six {
+    font-weight: bold;
+    filter: sepia(1);
+  }
+
+  .filter::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 40px;
+    width: 40px;
+    border-radius: 100%;
+    outline:  2px solid rgb(255, 255, 255);
+    filter: none;
+    
+  }
