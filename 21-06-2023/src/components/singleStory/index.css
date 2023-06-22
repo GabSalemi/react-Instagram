@@ -36,3 +36,15 @@
     text-align: center;
 }
 
+
+.logged--user__story {
+    height: 98px;
+    width: 10%;
+    margin-left: 10px;
+}
+
+.followed__story {
+    height: 98px;
+    width: 10%;
+}
+

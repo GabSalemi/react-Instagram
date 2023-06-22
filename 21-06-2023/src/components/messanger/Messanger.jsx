@@ -1,10 +1,13 @@
 import { CameraIcon } from "../../icons";
+import ChatModal from "../chatModal";
 import "./index.css";
 import { useState, useEffect, useRef } from "react";
 
 const Messanger = ({message}) => {
     const [searchInput, setSearchInput] = useState("")
     const [chats, setChats] = useState([])
+   
+    const chatRef = useRef(null)
 
     useEffect(() => {
         fetch("https://api.npoint.io/45615d0ddef177eef95b")
@@ -13,40 +16,41 @@ const Messanger = ({message}) => {
     }, []);
 
     
+    const changeRef = () => {
+        console.log(chatRef.current.textContent)
+    }
     
-
     const inputChange = (e) => {
         setSearchInput(e.target.value)
-        
     }
 
-    const renderFilteredChats = () => {
+
         let filteredChats = chats.filter(singleConversation => singleConversation.participants[1].username.includes(searchInput))
         console.log(filteredChats)
-        filteredChats.map((element) => {
-            return (
-                <div className="user__message" key={element.id}>
-                    <div className="user__img">
-                        <img src={element.participants[1].avatar_url} alt={element.participants[1].username} />
-                    </div>
-                    <div className="user__info">
-                        <h4>{element.participants[1].username}</h4>
-                        <p>Lorem ipsum dolor sit amet.</p>
-                    </div>
-                    <div className="camera__icon">
-                        <CameraIcon />
-                    </div>
-              </div>
-            )
-        })
-    }
+        
+          
 
-    const onChatClick = (e) => {
+    /* const onChatClicks = (e) => {
         let singleChat = chats.find(chat => chat.participants[1].username) 
         let chatParticipant = singleChat.participants[1].username // relativo interlocutore
         let chatParticipantLower = chatParticipant.toLowerCase()
         console.log(chatParticipantLower)
-    }
+    } */
+
+    const onChatClick = (chatName) => {
+        let referenceChat = chats.find(chat => chat.participants[1].username === chatName)
+        console.log(referenceChat)
+
+        return ( 
+    
+            <div> 
+
+              <ChatModal data={referenceChat}/> 
+              
+            </div> 
+            
+          ) 
+      };
     
 
 
@@ -65,10 +69,10 @@ const Messanger = ({message}) => {
                 return(
                     <div className="user__message" key={element.id}>
                         <div className="user__img">
-                            <img src={element.userImage} alt={element.username} />
+                            <img src={element.participants[1].avatar_url} alt={element.username} />
                         </div>
-                        <div className="user__info">
-                            <h4>{element.username}</h4>
+                        <div className="user__info" onClick={() => onChatClick(element.participants[1].username)}>
+                            <h4 ref={chatRef}>{element.participants[1].username}</h4>
                             <p>Lorem ipsum dolor sit amet.</p>
                         </div>
                         <div className="camera__icon">
@@ -76,7 +80,24 @@ const Messanger = ({message}) => {
                         </div>
                     </div>
                 )}
-                ) : console.log("")}
+                ) : filteredChats.map((element) => {
+
+                    return (
+                    <div className="user__message" key={element.id}>
+                        <div className="user__img">
+                            <img src={element.participants[1].avatar_url} alt={element.participants[1].username} />
+                        </div>
+                        <div className="user__info" onClick={() => onChatClick(element.participants[1].username)}>
+                            <h4>{element.participants[1].username}</h4>
+                            <p>Lorem ipsum dolor sit amet.</p>
+                        </div>
+                        <div className="camera__icon">
+                            <CameraIcon />
+                        </div>
+                  </div>)
+                
+            })
+        }
             </ul>
         </div>
     </>

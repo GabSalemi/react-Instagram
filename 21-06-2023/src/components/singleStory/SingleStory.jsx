@@ -2,9 +2,7 @@ import "./index.css";
 
 const SingleStory = ({ user }) => {
 
-
-
-    return (<div className="single--story__div">
+    return (<div className={user?.isUser ? "logged--user__story" : "followed__story"} key={user?.id}>
       <div className="story--user__img">
         <img src={user?.userImage} alt={user?.username} />
       </div>
