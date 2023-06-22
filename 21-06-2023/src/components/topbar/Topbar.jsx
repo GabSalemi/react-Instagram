@@ -1,4 +1,4 @@
-import { CameraIcon, IGTVLogo, MainLogo, MessangerIcon } from "../../icons";
+import { CameraIcon, IGTVLogo, LikeIcon, MainLogo, MessangerIcon } from "../../icons";
 import "./index.css";
 
 
@@ -15,8 +15,8 @@ const Topbar = ({setSection}) => {
                 <MainLogo onClick={() => onHandleClick("home")}/>
             </div>
             <div className="other--icons__div">
-                <div className="IGTV--logo__container" onClick={() => onHandleClick("IGTV")}>
-                    <IGTVLogo />
+                <div className="IGTV--logo__container" onClick={() => onHandleClick("Interactions")}>
+                    <LikeIcon />
                 </div>
                 <div className="messanger--logo__container" onClick={() => onHandleClick("messanger")}>
                     <MessangerIcon />
