@@ -1,7 +1,7 @@
-import { CameraIcon } from "../../icons";
-import ChatModal from "../chatModal";
+import {CameraIcon} from "../../icons";
 import "./index.css";
 import { useState, useEffect, useRef } from "react";
+
 
 const Messanger = ({message}) => {
     const [searchInput, setSearchInput] = useState("")
@@ -45,7 +45,7 @@ const Messanger = ({message}) => {
     
             <div> 
 
-              <ChatModal data={referenceChat}/> 
+              <Chatmodal data={referenceChat}/> 
               
             </div> 
             
