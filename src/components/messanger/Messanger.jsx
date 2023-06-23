@@ -3,8 +3,6 @@ import "./index.css";
 import { useState, useEffect, useRef } from "react";
 import Chatmodal from "../chatmodal";
 
-
-
 const Messanger = () => {
     const [searchInput, setSearchInput] = useState("")
     const [chats, setChats] = useState([])
