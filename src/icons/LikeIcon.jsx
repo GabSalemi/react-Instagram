@@ -4,7 +4,6 @@ const LikeIcon = ({fill}) => (
       width={24}
       height={22}
       fill={fill}
-      {...fill}
     >
       <path
         fill="#262626"

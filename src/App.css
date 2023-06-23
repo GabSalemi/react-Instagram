@@ -1,9 +1,17 @@
+body {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+
 #root {
-  max-width: 1000px;
   margin: 0;
   padding: 0;
+  width: 100vw;
   position: relative;
   overflow-x: hidden;
+  
 }
 
 * {box-sizing: border-box;
@@ -13,4 +21,10 @@ text-align: center;}
 
 *::-webkit-scrollbar {
   display: none;
+}
+
+@media screen and (min-width: 667px) {
+    #root {
+      width: 50vw;
+    }
 }

@@ -1,4 +1,4 @@
-import {CameraIcon, LikeIcon} from "../../icons";
+import {CameraIcon} from "../../icons";
 import "./index.css";
 import { useState, useEffect, useRef } from "react";
 import Chatmodal from "../chatmodal";
@@ -8,7 +8,7 @@ import Chatmodal from "../chatmodal";
 const Messanger = () => {
     const [searchInput, setSearchInput] = useState("")
     const [chats, setChats] = useState([])
-    const [modalState, setModalState] = useState("")
+    const [modalState, setModalState] = useState(false)
    
     const chatRef = useRef(null)
 
@@ -18,7 +18,6 @@ const Messanger = () => {
         .then((data) => setChats(data.messageList))
     }, []);
 
-    
     const changeRef = () => {
         console.log(chatRef.current.textContent)
     }
@@ -29,22 +28,10 @@ const Messanger = () => {
 
     let filteredChats = chats.filter(singleConversation => singleConversation.participants[1].username.includes(searchInput))
 
-    
-
     const onChatClick = (chatName) => {
-        if (modalState === "") {
-            setModalState("true")
-        } else {
-            setModalState("")
-        }
-       
-        console.log(modalState)
-        
+            setModalState(!modalState)
     //    const foundChat = chats.find(chat => chat.participants[1].username === chatName)   
       };
-
-
-
 
    return (
     <>
@@ -71,14 +58,13 @@ const Messanger = () => {
                             <CameraIcon />
                         </div>
                         <div className={modalState ? "modal__div shown" : "modal__div hide"}>
-                            <Chatmodal data={element}/>
+                            <Chatmodal data={element} modalState={modalState} setModalState={setModalState} />
                         </div>
 
                     </div>
                 )}
                 ) : 
                 filteredChats.map((element) => {
-
                     return (
                     <div className="user__message" key={element.id}>
                         <div className="user__img">
@@ -95,7 +81,6 @@ const Messanger = () => {
                             <Chatmodal data={element} modalState={modalState} setModalState={setModalState} />
                             <div className="close__button"></div>
                         </div>
-
                   </div>)
             })
         }

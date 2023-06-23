@@ -40,3 +40,11 @@ span {
 .like--icon__div {
     padding: 4px;
 }
+
+.post__contents {
+    width: 100%;
+}
+
+.post__contents img {
+    width: 100%;
+}

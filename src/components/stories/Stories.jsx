@@ -9,7 +9,7 @@ const Stories = ({ user, stories }) => {
                     <ul className="stories__list">
                         {stories && stories.map((singleStory) => {
                             return (
-                                        <SingleStory user={singleStory} />
+                                        <SingleStory user={singleStory} key={singleStory.id} />
                             )
                         }
                         )}

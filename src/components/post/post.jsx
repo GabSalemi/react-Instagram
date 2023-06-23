@@ -29,7 +29,7 @@ const Post = ({post}) => {
                             <img src={element.media[0].src} alt={element.media[0].src} />
                             <div className="post__details">
                                 <div className="like--icon__div" onClick={() => toggleLike()}>
-                                    <LikeIcon fill={like && like ? "#FD1D1D" : "#262626"}/>
+                                    <LikeIcon fill={like && like ? "#FD1D1D" : "#262626"} key={element.id}/>
                                 </div>
                                 <div className="post__description">
                                     <p><span>{element.userName}</span>: Lorem ipsum, dolor sit amet consectetur adipisicing elit. Incidunt optio facere excepturi mollitia modi recusandae eveniet perferendis fugiat culpa commodi.</p>
