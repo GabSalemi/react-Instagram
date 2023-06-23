@@ -1,6 +1,7 @@
 import "./index.css";
 import React from "react";
 import { useEffect, useState } from "react";
+import { Swiper, SwiperSlide} from "swiper";
 
 import { Pagination } from "swiper";
 
