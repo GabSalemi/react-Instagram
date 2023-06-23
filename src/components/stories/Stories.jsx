@@ -1,5 +1,5 @@
 import "./index.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import SingleStoryModal from "../singleStoryModal";
 import SingleStory from "../singleStory";
 
@@ -10,13 +10,14 @@ const Stories = ({ user, stories }) => {
 
     const [modalState, setModalState] = useState(false); // Modal Open
 
-    const openModalStories = (index) => {
-        setStoryState(index);
+
+    const openModalStories = (i) => {
+        setStoryState(i);
         setModalState(true);
       };
 
       useEffect(() => {
-        setStoryStart(storyState !== false ? storyState : false);
+        setStoryState(storyState !== false ? storyState : false);
       }, [storyState]);
     
       const closeModalStories = () => {
@@ -24,22 +25,21 @@ const Stories = ({ user, stories }) => {
         setStoryState(false);
       };
 
-
-
     return (
         <>
             <div className="stories__div">
         
                     <ul className="stories__list">
                         {stories && stories.map((singleStory, i) => {
-                            return (
-                                        <SingleStory user={singleStory} key={singleStory.id} />
+                            return (   <li onClick={() => openModalStories(i)} key={singleStory.id}>
+                                        <SingleStory user={singleStory}  />
+                                        </li>
                             )
                         }
                         )}
                     </ul>
             </div>
-            <div>
+            <div className="modal__container">
             {storyState !== false && (
             <SingleStoryModal 
                  data={stories}

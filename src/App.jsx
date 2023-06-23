@@ -22,8 +22,10 @@ function App() {
   const [logUsers, setLoggedUser] = useState(loggedUser)
   const [posts, setPosts] = useState(Posts)
 
+
+
   useEffect(() => {
-    fetch("https://api.npoint.io/90519d89d6a9f3659be6")
+    fetch("https://api.npoint.io/fb71fe7b4dc064c4e326")
     .then((res) => res.json())
     .then((data) => setUsers(data))
   }, [])

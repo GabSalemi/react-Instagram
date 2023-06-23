@@ -19,4 +19,8 @@
    
 }
 
+.stories__list li {
+    list-style: none;
+}
+
 

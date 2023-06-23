@@ -11,26 +11,28 @@ import WriteMessage from "../writemessage";
 import UserHeader from "../userheader";
 
 const SingleStoryModal = ({data, openModal, closeModal, i}) => {
+
     const [start, setStart] = useState(false);
     useEffect(() => {
-    setStart(index);
-  }, [index]);
+    setStart(i);
+  }, [i]);
 
+  console.log(data)
  return ( 
- <div>
+ <div className={`${openModal ? "open" : ""} modal__stories`}>
     <div className="ModalStories__Close" onClick={() => closeModal()}>✖</div>
-    <Swiper initialSlide={i}>
+    <Swiper initialSlide={i} spaceBetween={50}>
         {data && data?.map((userStories) => {
-            <SwiperSlide key={userStories?.id}>
-                <UserHeader data={userStories}/>
-                <WriteMessage placeholder="Send message"/>
+            
+            <SwiperSlide key={userStories?.id} className={userStories.id}>
+                
                 <Swiper modules={[Pagination]} pagination={{type: "progressbar"}}>
                     {userStories?.stories?.map((singleStory) => (
-                        <SwiperSlide key={singleStory.id}>
-                            {story?.type === "image" ? (
-                                <img src={story.src}></img>
+                        <SwiperSlide key={singleStory?.id}>
+                            {singleStory?.type === "image" ? (
+                                <img src="https://picsum.photos/200/300"></img>
                             ) : (
-                                <video src={story.src} playsInline muted autoPlay loop></video>
+                                <video src={singleStory?.src} playsInline muted autoPlay loop></video>
                             )}
                         </SwiperSlide>
                     ))}
