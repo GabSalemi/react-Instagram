@@ -1,1 +1,1 @@
-
+Ho avuto diversi problemi di import sia tra i componenti che relativi allo swiper installato durante la lezione di oggi. Probabilmente il codice darà problemi all'avvio. Proverò a creare una nuova repository (copia-react-instagram) installando nuovamente tutto il necessario in cui importerò semplicemente i componenti creati durante la settimana.
