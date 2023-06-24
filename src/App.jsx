@@ -11,16 +11,17 @@ import Post from './components/post/post'
 import Camera from './components/camera'
 import Messanger from './components/messanger/Messanger'
 import Explore from './components/explore/Explore'
-
+import ReelSlider from './components/reelSlider'
 
 
    
 
 function App() {
   const [section, setSection] = useState("home")
-  const [users, setUsers] = useState(followedUsers)
+  const [users, setUsers] = useState([])
   const [logUsers, setLoggedUser] = useState(loggedUser)
   const [posts, setPosts] = useState(Posts)
+  const [reels, setReels] = useState([])
 
 
 
@@ -36,11 +37,19 @@ function App() {
     .then((data) => setPosts(data))
   }, [])
 
+  useEffect(() => {
+    fetch("https://api.npoint.io/2a77231d88a8a950feed")
+    .then((res) => res.json())
+    .then((data) => setReels(data))
+  }, [])
+
+
+
         const onSectionRender = () => {
     switch(section) {
       case "home":
         return ( <>
-          <Stories user={logUsers} stories={users}/>
+          <Stories stories={users}/>
           <Post post={posts}/>
         </>);
       case "camera":
@@ -54,7 +63,7 @@ function App() {
         case "New Post":
           return <div>New Post Section</div>
         case "Likes":
-          return <div>Like section</div>
+          return <ReelSlider data={reels} />
         case "Profile":
           return <div>Profile Section</div>
     }

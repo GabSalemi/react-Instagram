@@ -2,14 +2,14 @@ import "./index.css";
 import { LikeIcon, MessangerIcon } from "../../icons";
 
 
-const WriteMessage = (placeholder) => {
+const WriteMessage = ({placeholder}) => {
 
     return (
-        <>
+        <div className="interaction__div">
             <input type="text" placeholder={placeholder} />
-            <LikeIcon />
-            <MessangerIcon />
-        </>
+            <LikeIcon fill={"#ffffff"} />
+            <MessangerIcon fill={"#ffffff"} />
+        </div>
     )
 }
 

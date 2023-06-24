@@ -1,10 +1,10 @@
 import "./index.css";
 import { useState, useEffect } from "react";
-import SingleStoryModal from "../singleStoryModal";
+import SingleStoryModal from "../singleStoryModal/SingleStoryModal";
 import SingleStory from "../singleStory";
 
 
-const Stories = ({ user, stories }) => {
+const Stories = ({ stories }) => {
 
     const [storyState, setStoryState] = useState(false); // Modal Start State
 
@@ -41,7 +41,7 @@ const Stories = ({ user, stories }) => {
             </div>
             <div className="modal__container">
             {storyState !== false && (
-            <SingleStoryModal 
+            <SingleStoryModal
                  data={stories}
                 openModal={modalState}
                 closeModal={closeModalStories}
