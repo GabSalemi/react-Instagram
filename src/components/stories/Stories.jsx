@@ -6,9 +6,9 @@ import SingleStory from "../singleStory";
 
 const Stories = ({ stories }) => {
 
-    const [storyState, setStoryState] = useState(false); // Modal Start State
+    const [storyState, setStoryState] = useState(false); 
 
-    const [modalState, setModalState] = useState(false); // Modal Open
+    const [modalState, setModalState] = useState(false); 
 
 
     const openModalStories = (i) => {

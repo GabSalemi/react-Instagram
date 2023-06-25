@@ -1,6 +1,9 @@
 .modal__chat {
-    width: 100vw;
-    height: 100vh;
+    color: white;
+}
+
+.modal__info {
+    color: white;
 }
 
 .hide {
@@ -16,5 +19,13 @@
     position: absolute;
     top: 0;
     right: 0;
+    width: 50px;
+    height: 100%;
     background-color: blue;
+}
+
+.modal__button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
 }

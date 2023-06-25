@@ -6,10 +6,14 @@ import Chatmodal from "../chatmodal";
 const Messanger = () => {
     const [searchInput, setSearchInput] = useState("")
     const [chats, setChats] = useState([])
-    const [modalState, setModalState] = useState(false)
+    const [showModal, setShowModal] = useState(false)
+    const [chatState, setChatState] = useState(false)
 
+  
     const ChatName = useRef("")
-
+    function checkRef() {
+        console.log(ChatName.current.innerText)
+    }
     
     useEffect(() => {
         fetch("https://api.npoint.io/45615d0ddef177eef95b")
@@ -25,21 +29,24 @@ const Messanger = () => {
 
     // Toggle chatModal
 
-    const onChatClick = () => {
-            setModalState(true)
-            ChatName.current = ChatName.current.textContent
-        console.log(ChatName.current.textContent)
-    //    const foundChat = chats.find(chat => chat.participants[1].username === chatName)   
-      };
+    const modalInteraction = (index) => {
+        setShowModal(true)
+        setChatState(index)
+       
+    }
 
-      const closeModalChat = () => {
-        setModalState(false);
-      };
+    useEffect(() => {
+        setChatState(chatState !== false ? chatState : false);
+      }, [chatState]);
+
+   
+    //    const foundChat = chats.find(chat => chat.participants[1].username === chatName)   
+      
 
    return (
     <>
         <div>
-            <h4>Random-User</h4>
+            <h4>Random-User</h4>  
         </div>
         <div>
         <input type="text" onChange={inputChange} className="search__bar" placeholder="🔎︎ Search"></input>
@@ -47,21 +54,22 @@ const Messanger = () => {
         <div>
             <ul className="message__container">
                 
-                {searchInput === "" ? chats.map(element => {
+                {searchInput === "" ? chats.map((element, index)=> {
                 return(
-                    <div className="user__message" key={element.id} onClick={() => onChatClick()}>
+                    <div className="user__message" key={element.id}>
                         <div className="user__img">
                             <img src={element.participants[1].avatar_url} alt={element.username} />
                         </div>
-                        <div className="user__info">
-                            <h4 ref={ChatName} >{element.participants[1].username}</h4>
+                        <div className="user__info" onClick={() => modalInteraction(index)}>
+                            <h4 className='selected'>{element.participants[1].username}</h4>
                             <p>Lorem ipsum dolor sit amet.</p>
                         </div>
                         <div className="camera__icon">
                             <CameraIcon />
                         </div>
-                       
-                        <Chatmodal data={element} modalState={modalState} setModal={closeModalChat} />
+                        {chatState !== false && (
+                        <Chatmodal data={element} showModal={showModal} setShowModal={modalInteraction} index={element.id}/>
+                        )}        
                     </div>
                 )}
                 ) : 
@@ -71,7 +79,7 @@ const Messanger = () => {
                         <div className="user__img">
                             <img src={element.participants[1].avatar_url} alt={element.participants[1].username} />
                         </div>
-                        <div className="user__info" >
+                        <div className="user__info" onClick={() => setShowModal(true)}>
                             <h4>{element.participants[1].username}</h4>
                             <p>Lorem ipsum dolor sit amet.</p>
                         </div>
@@ -79,7 +87,7 @@ const Messanger = () => {
                             <CameraIcon />
                         </div>
                         
-                        <Chatmodal data={element} modalState={modalState} setModal={closeModalChat} />
+                        <Chatmodal data={chats} showModal={showModal} setShowModal={setShowModal}/>
                   </div>)
             })
         }

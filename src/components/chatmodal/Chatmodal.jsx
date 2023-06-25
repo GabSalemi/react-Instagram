@@ -1,16 +1,21 @@
 import "./index.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-const Chatmodal = ({data, modalState, setModal}) => {
+const Chatmodal = ({data, showModal, setShowModal, index}) => {
+
+    const [chatState, setChatState] = useState(false);
+
+    useEffect(() => {
+        setChatState(index);
+        console.log(index)
+      }, [index]);
    
    return(
-   
-    <div className={`${modalState !== false ? "shown" : "hide"} modal__chat`}>
-        <div className="modal__close" onClick={setModal()}>🡠</div>
-        <div className="modal__chat">
-            <p>{data.id}</p>
+        <div className={`${showModal === false ? "hide" : "shown"} modal__chat`}>
+                <div className="modal__close" onClick={() => setShowModal(false)}>🡠</div>
+                <div className="modal__info">{data.username}</div>
+                <div className="modal__chat">{data.id}</div>
         </div>
-    </div>
    )
 }
 
