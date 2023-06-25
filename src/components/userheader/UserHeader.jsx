@@ -6,7 +6,7 @@ const UserHeader = ({userData}) => {
     return (
         <div className="user__header">
             <div className="user__avatar">
-                <img src={userData.userImage} alt={userData.username} />
+                <img src={userData.userImage ? userData.userImage : userData.avatar_url} alt={userData.username} />
             </div>
             <div className="username__div">
                 <p>{userData.username}</p>

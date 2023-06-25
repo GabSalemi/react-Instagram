@@ -8,29 +8,26 @@ import { Pagination } from "swiper";
 import "swiper/css";
 import "swiper/css/pagination";
 
+import WriteMessage from "../writemessage";
+import UserHeader from "../userheader";
+
 
 const ReelSlider = ({data}) => {
     return (
         <>
           <Swiper
             direction={"vertical"}
-            pagination={{
-              clickable: true,
-            }}
-            modules={[Pagination]}
-            className="mySwiper"
+            className="reel__swiper"
           >
-            <SwiperSlide>
-                <video src={data[0].reelSrc}></video>
-            </SwiperSlide>
-            <SwiperSlide>Slide 2</SwiperSlide>
-            <SwiperSlide>Slide 3</SwiperSlide>
-            <SwiperSlide>Slide 4</SwiperSlide>
-            <SwiperSlide>Slide 5</SwiperSlide>
-            <SwiperSlide>Slide 6</SwiperSlide>
-            <SwiperSlide>Slide 7</SwiperSlide>
-            <SwiperSlide>Slide 8</SwiperSlide>
-            <SwiperSlide>Slide 9</SwiperSlide>
+            {data.map((singleReel, index) => {
+              
+              return <SwiperSlide>
+                <UserHeader userData={singleReel} />
+                <video className="reel__video" src={singleReel.reelSrc} autoPlay muted loop playsInline></video>
+                <WriteMessage placeholder={"Comment!"}/>
+              </SwiperSlide>
+
+            })}
           </Swiper>
         </>
       );
